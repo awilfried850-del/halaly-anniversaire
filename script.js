@@ -10,21 +10,55 @@ function typing(){
 }
 typing();
 
-
 // ---------- MUSIQUE ----------
 function playMusic(){
     document.getElementById("music").play();
 }
 
+// ---------- DIAPORAMA COMME CLIP VIDEO ----------
+let currentSlide = 0;
+const slidesContainer = document.createElement('div');
+slidesContainer.className = 'slideshow-container';
 
-// ---------- GALERIE (10+ images) ----------
-const gallery = document.getElementById("gallery");
 for(let n=1; n<=10; n++){
-    const img = document.createElement("img");
+    const slide = document.createElement('div');
+    slide.className = 'slide';
+    
+    const img = document.createElement('img');
     img.src = "photos/"+n+".jpg";
-    gallery.appendChild(img);
+    img.alt = `Photo ${n}`;
+    
+    slide.appendChild(img);
+    slidesContainer.appendChild(slide);
 }
 
+// Ajouter le diaporama à la page
+document.querySelector('.container').insertBefore(slidesContainer, document.querySelector('.letter'));
+
+// Fonction pour changer les slides
+function showSlide(index) {
+    const slides = document.querySelectorAll('.slide');
+    
+    // Retirer la classe active de tous les slides
+    slides.forEach(slide => {
+        slide.classList.remove('active');
+    });
+    
+    // Ajouter la classe active au slide courant
+    if (slides[index]) {
+        slides[index].classList.add('active');
+    }
+}
+
+// Démarrer le diaporama
+showSlide(currentSlide);
+
+// Changer de slide automatiquement toutes les 3 secondes
+setInterval(() => {
+    const slides = document.querySelectorAll('.slide');
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+}, 3000);
 
 // ---------- CONFETTIS SIMPLES ----------
 const canvas = document.getElementById("confetti");
@@ -61,3 +95,9 @@ function update(){
 }
 
 setInterval(draw, 30);
+
+// Redimensionner le canvas quand la fenêtre change de taille
+window.addEventListener('resize', () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
