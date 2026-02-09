@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Pour Halaly ✨</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="lux-bg center">
+
+<div class="lux-card">
+    <h1 class="gold">Une surprise pour Halaly 🎁</h1>
+    <p>Scanne le code</p>
+    <div id="qrcode"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+new QRCode(document.getElementById("qrcode"), {
+    text: "surprise.html",
+    width: 220,
+    height: 220
+});
+</script>
+
+</body>
+</html>
