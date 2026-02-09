@@ -1,27 +1,60 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Pour Halaly ✨</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <title>✨ Surprise pour Halaly ✨</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎁</text></svg>">
+    <style>
+* {
+   
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+    </style>
 </head>
 
 <body class="lux-bg center">
+    <div class="lux-card">
+        <div class="card-content">
+            <h1 class="gold">Une surprise pour Halaly 🎁</h1>
+            <p class="instruction">Scanne le code ci-dessous</p>
+            
+            <div class="qrcode-container" id="qrcode-container">
+                <div id="qrcode"></div>
+            </div>
+            
+            <p class="hint">(Utilise l'appareil photo de ton téléphone)</p>
+        </div>
+    </div>
 
-<div class="lux-card">
-    <h1 class="gold">Une surprise pour Halaly 🎁</h1>
-    <p>Scanne le code</p>
-    <div id="qrcode"></div>
-</div>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-new QRCode(document.getElementById("qrcode"), {
-    text: "https://awilfried850-del.github.io/halaly-anniversaire/surprise.html",
-    width: 220,
-    height: 220
+document.addEventListener("DOMContentLoaded", function () {
+
+    const qrBox = document.getElementById("qrcode");
+    qrBox.innerHTML = "";
+
+    new QRCode(qrBox, {
+        text: "https://awilfried850-del.github.io/halaly-anniversaire/surprise.html",
+        width: 200,
+        height: 200
+    });
+
+    // 🔥 Supprimer le fallback image si généré
+    setTimeout(() => {
+        const imgs = qrBox.querySelectorAll("img");
+        imgs.forEach(img => img.remove());
+    }, 300);
+
 });
 </script>
+
+
 
 </body>
 </html>
