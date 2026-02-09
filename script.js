@@ -19,7 +19,7 @@ function playMusic(){
 
 // ---------- GALERIE (10+ images) ----------
 const gallery = document.getElementById("gallery");
-for(let n=1; n<=12; n++){
+for(let n=1; n<=10; n++){
     const img = document.createElement("img");
     img.src = "photos/"+n+".jpg";
     gallery.appendChild(img);
